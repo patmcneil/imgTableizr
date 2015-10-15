@@ -8,7 +8,7 @@ _A fun bit of code to generate an HTML table into a graphic based on an input of
 A level of "compression" is achieved by comparing adjacent pixels and combining `<td>`s. This can be controlled via the parameters. With single color graphics, the weight of the code may be worth the trade-off. But larger, more complex images can increase the file size over the original .jpg by over 300x! Such enormous tables can cripple the browsers displaying them.
 
 ### Usage
-Include img-tableizr.php, then `echo` the function to print the table.
+`<?php include(img-tableizr.php) ?>`, then `echo` the function to print the table.
 ```php
 imgTableizr(string $imgSrc[, mixed $quality='medium', mixed $width='no-resize']);
 ```
