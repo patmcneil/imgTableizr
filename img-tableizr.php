@@ -11,10 +11,6 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 
 	$output = array();
 
-	// This feels hacky...
-	// ini_set( 'memory_limit', '1000M' );
-	// set_time_limit( 0 );
-
 	$explodedSrc = explode( '.', $imgSrc );
     $ext = $explodedSrc[ count($explodedSrc) - 1 ];
 
@@ -27,11 +23,11 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 	}else if (preg_match('/bmp/i',$ext)){
 		$img = imagecreatefrombmp( $imgSrc );
 	}else{
-		return false; //return 'Invalid file type';
+		return false;
 	}
 
     if( $width != 'no-resize' && is_int( $width ) && $width > 0 ){
-    	$img = imagescale( $img, $width ); // @NOTE: imagescale() requires PHP 5.5 or higher!!
+    	$img = imagescale( $img, $width );
     }    
 
 	$imgW = imagesx( $img );
@@ -56,16 +52,16 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 		case is_int($quality) && $quality < 0:
 			$threshold = 0;
 		break;
-		default: return false; //return 'Invalid quality';
+		default: return false;
 	}	
 
 	array_push( $output,'<table style="border-spacing:0px;width:'.$imgW.'px;height:'.$imgH.'px;margin:0;padding:0;border-spacing:0;">' );
 
-	for( $row = 0; $imgH > $row; $row++ ){ // Loop through every "row" of pixels.
+	for( $row = 0; $imgH > $row; $row++ ){
 
 		array_push( $output,'<tr>' );
 
-	    for( $col = 0; $imgW > $col; $col++ ){ // Loop through every column (pixel) in the current row.
+	    for( $col = 0; $imgW > $col; $col++ ){
 
 	    	$rgb = imagecolorat( $img, $col, $row );
 	        $r = ( $rgb >> 16 ) & 0xFF;
@@ -75,26 +71,23 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 			$currentHex = rgb2hex($currentRGB);
 			
 			if( $col != 0 ){
+				if( abs( $currentRGB[0] - $prevRGB[0]) <= $threshold ){
+					if( abs( $currentRGB[1] - $prevRGB[1]) <= $threshold ){
+						if( abs( $currentRGB[2] - $prevRGB[2]) <= $threshold ){
 
-				if( abs( $currentRGB[0] - $prevRGB[0]) <= $threshold ){ // R
-
-					if( abs( $currentRGB[1] - $prevRGB[1]) <= $threshold ){ // G
-
-						if( abs( $currentRGB[2] - $prevRGB[2]) <= $threshold ){ // B
-
-							$colspan ++; //echo 'Colors match.<br/>';
-
+							$colspan ++;
+							
 							if( $col+1 == $imgW ){
-								generateCell(); //echo 'Last pixel in row.<br/>';
+								generateCell();
 							}
 						}else{
-							generateCell(); //echo 'Blue values do not match.<br/>';
+							generateCell();
 						}
 					}else{
-						generateCell(); //echo 'Green values do not match.<br/>';
+						generateCell();
 					}
 				}else{
-					generateCell(); //echo 'Red values do not  match.<br/>';
+					generateCell();
 				}
 			}else{
 				$prevHex = $currentHex;
@@ -104,7 +97,7 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 	    array_push( $output,'</tr>' );
 	}
 	array_push( $output, '</table>');
-	
+
 	$output = implode( '', $output );
 
 	imagedestroy( $img );
@@ -113,7 +106,6 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 }
 
 function rgb2hex($rgb) {
-	// Credit on this rgb2hex converter http://www.brandonheyer.com/
 	$hex = str_pad( dechex( $rgb[0] ), 2, "0", STR_PAD_LEFT );
 	$hex .= str_pad( dechex( $rgb[1] ), 2, "0", STR_PAD_LEFT );
 	$hex .= str_pad( dechex( $rgb[2] ), 2, "0", STR_PAD_LEFT );
@@ -121,7 +113,7 @@ function rgb2hex($rgb) {
 }
 
 function generateCell(){
-	global $colspan, $colspan, $prevHex, $prevRGB, $currentHex, $currentRGB, $tdCount, $output;
+	global $colspan, $prevHex, $prevRGB, $currentHex, $currentRGB, $output;
 
 	array_push( $output, '<td style="height:1px;width:'.$colspan.'px;margin:0;padding:0;border-spacing:0"bgcolor="#'.$prevHex.'"colspan="'.$colspan.'"></td>' );
 	$prevHex = $currentHex;
