@@ -10,7 +10,7 @@ A level of "compression" is achieved by comparing adjacent pixels and combining 
 ### Usage
 `<?php include(img-tableizr.php) ?>`, then `echo` the function to print the table.
 ```php
-echo imgTableizr(string $imgSrc[, mixed $quality='medium', mixed $width='no-resize']);
+imgTableizr(string $imgSrc[, mixed $quality='medium', mixed $width='no-resize']);
 ```
 
 ### Parameters
