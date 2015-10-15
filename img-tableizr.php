@@ -12,7 +12,7 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 	$output = array();
 
 	$explodedSrc = explode( '.', $imgSrc );
-    $ext = $explodedSrc[ count($explodedSrc) - 1 ];
+	$ext = $explodedSrc[ count($explodedSrc) - 1 ];
 
 	if (preg_match('/jpg|jpeg/i',$ext)){
 		$img = imagecreatefromjpeg( $imgSrc );
@@ -76,7 +76,7 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 						if( abs( $currentRGB[2] - $prevRGB[2]) <= $threshold ){
 
 							$colspan ++;
-							
+
 							if( $col+1 == $imgW ){
 								generateCell();
 							}
