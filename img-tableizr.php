@@ -12,7 +12,7 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 	$output = array();
 
 	$explodedSrc = explode( '.', $imgSrc );
-    $ext = $explodedSrc[ count($explodedSrc) - 1 ];
+	$ext = $explodedSrc[ count($explodedSrc) - 1 ];
 
 	if (preg_match('/jpg|jpeg/i',$ext)){
 		$img = imagecreatefromjpeg( $imgSrc );
@@ -26,9 +26,9 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 		return false;
 	}
 
-    if( $width != 'no-resize' && is_int( $width ) && $width > 0 ){
-    	$img = imagescale( $img, $width );
-    }    
+	if( $width != 'no-resize' && is_int( $width ) && $width > 0 ){
+		$img = imagescale( $img, $width );
+	}    
 
 	$imgW = imagesx( $img );
 	$imgH = imagesy( $img );
@@ -61,10 +61,10 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 
 		array_push( $output,'<tr>' );
 
-	    for( $col = 0; $imgW > $col; $col++ ){
+		for( $col = 0; $imgW > $col; $col++ ){
 
-	    	$rgb = imagecolorat( $img, $col, $row );
-	        $r = ( $rgb >> 16 ) & 0xFF;
+			$rgb = imagecolorat( $img, $col, $row );
+			$r = ( $rgb >> 16 ) & 0xFF;
 			$g = ( $rgb >> 8 ) & 0xFF;
 			$b = $rgb & 0xFF;
 			$currentRGB = array( 0 => $r, 1 => $g, 2 => $b) ;
@@ -94,7 +94,7 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 				$prevRGB = $currentRGB;
 			}
 		}
-	    array_push( $output,'</tr>' );
+		array_push( $output,'</tr>' );
 	}
 	array_push( $output, '</table>');
 
