@@ -5,8 +5,6 @@
 # http://patmcneil.net
 # Updated: Oct. 15, 2015
 
-echo imgTableizr('profile.jpg', 'low');
-
 function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 
 	global $colspan, $prevHex, $prevRGB, $currentHex, $currentRGB, $tdCount, $output;
