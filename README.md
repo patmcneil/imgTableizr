@@ -1,11 +1,11 @@
 # imgTableizr
 
 ### Description
-_A fun bit of code to generate an HTML table into a graphic based on an input of a raster image._
+_A fun bit of code to generate an HTML table from a raster image._
 
-**Tableizr** has no real practical application, it's more of a thought experiment during drinks that turned real. The only use I can think of is inserting a small image (e.g. a logo) into an HTML email or forum post without having to download a resource.
+**Tableizr** has no real practical application--- it's more of a thought experiment that arose during drinks that turned real. The only use I can think of is to generate a table to insert a graphic (e.g. a logo) into an HTML email or forum post without having to download a image resource.
 
-A level of "compression" is achieved by comparing adjacent pixels and combining `<td>`s. This can be controlled via the parameters. With single color graphics, the weight of the code may be worth the trade-off. But larger, more complex images can increase the file size over the original .jpg by over 300x! Such enormous tables can cripple the browsers displaying them.
+A level of "compression" is achieved by comparing adjacent pixels and combining `<td>`s. This can be controlled via the parameters. With single color graphics, the weight of the code may be worth the trade-off. But larger, more complex images can increase the file size over the original image by over 300 times! Such enormous tables can cripple the browsers displaying them.
 
 ### Usage
 `<?php include(img-tableizr.php) ?>`, then `echo` the function to print the table.
