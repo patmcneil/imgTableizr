@@ -119,4 +119,3 @@ function generateCell(){
 	$prevHex = $currentHex;
 	$prevRGB = $currentRGB;
 	$colspan = 1;
-}
