@@ -8,7 +8,7 @@ _A fun bit of code to generate an HTML table from a raster image._
 A level of "compression" is achieved by comparing adjacent pixels and combining `<td>`s. This can be controlled via the parameters. With small, single color graphics, the weight of the code may be worth the trade-off. But larger, more complex images can increase the file size over the original image by over 300 times! Such enormous tables can cripple the browsers displaying them.
 
 ### Usage
-`<?php include(img-tableizr.php) ?>`, then `echo` the function to print the table.
+`<?php include(img-tableizr.php) ?>`, then call the function to print the table like so:
 ```php
 imgTableizr(string $imgSrc[, mixed $quality='medium', mixed $width='no-resize']);
 ```
