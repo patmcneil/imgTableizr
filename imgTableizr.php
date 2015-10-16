@@ -4,8 +4,6 @@
 # Patrick McNeil
 # http://patmcneil.net
 
-imgTableizr('profile.jpg');
-
 function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 
 	global $colspan, $prevHex, $prevRGB, $currentHex, $currentRGB, $tdCount, $output;
