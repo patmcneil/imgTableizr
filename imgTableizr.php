@@ -100,7 +100,7 @@ function imgTableizr( $imgSrc, $quality='medium', $width='no-resize' ){
 
 	imagedestroy( $img );
 
-	echo implode( '', $output );;
+	echo implode( '', $output );
 }
 
 function rgb2hex($rgb) {
