@@ -25,10 +25,10 @@ imgTableizr(string $imgSrc[, mixed $quality='medium', mixed $width='no-resize'])
 | high            | 10               |
 | maximum         | 0                |
 
-`$width` _Optional._ The width in pixels that the image will be resized to. Defaults to `no-resize`. _Resizing the image distorts the source pixels, and may cause rendering inaccuracies._ **Large images _will_ cause browser rendering failures.**
+`$width` _Optional._ The width in pixels that the image will be resized to. Defaults to `no-resize`. _Resizing the image distorts the source pixels, and may cause rendering inaccuracies._ **NOTE: This feature requires PHP 5.5.0 or greater! Otherwise, do not pass a width to the function.**
 
 ### Return Value
-If successful, this function `echo`s an HTML table as a string. On failure, this function returns `false`.
+If successful, this function echos an HTML table as a string. On failure, this function returns `false`.
 
 ### Examples
 Print a table using the original image size and medium quality:
