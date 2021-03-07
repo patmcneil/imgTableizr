@@ -1,7 +1,7 @@
 # imgTableizr
 
 ### Description
-_A fun bit of code to generate an HTML table from a raster image._
+_A fun piece of code to generate an HTML table from a raster image._
 
 **Tableizr** has no real practical application--- it's more of a thought experiment that turned real. The only use I can think of is to generate a table to insert a graphic (e.g. a logo) into an HTML email or forum post without having to download a image resource. It's more of a funny tool than anything else.
 
